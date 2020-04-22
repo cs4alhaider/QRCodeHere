@@ -2,13 +2,9 @@
 Light macOS app to send text, urls and passwords directly to your phone using QR codes 
 
 
-| macOS app screenshot |
+| 🖥 Example 📱 |
 | --- |
-| ![](Assets/mac_image.png) |
-
-| How to use? 🤕 |
-| --- |
-| ![](Assets/ios_image.jpg) |
+| ![](Assets/image.png) |
 
 
 ## How to install?
