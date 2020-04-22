@@ -1,0 +1,12 @@
+//
+//  Localizable.strings
+//  QRCodeHere
+//
+//  Created by Abdullah Alhaider on 25/12/2019.
+//  Copyright © 2019 Abdullah Alhaider. All rights reserved.
+//
+
+"G.paste" = "لصق";
+
+// ------------------------------------------------------- //
+"MainView_startTypingYourText" = "ابدأ في كتابة النص أو رابط لإنشاد الكود الخاص..";
