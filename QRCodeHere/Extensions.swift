@@ -24,7 +24,7 @@ extension String {
     /// Returns a black and white QR code for this string (self).
     var qrImage: CIImage? {
         guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return nil }
-        let qrData = self.data(using: String.Encoding.ascii)
+        let qrData = self.data(using: .utf8)
         qrFilter.setValue(qrData, forKey: "inputMessage")
         
         let qrTransform = CGAffineTransform(scaleX: 20, y: 20)

@@ -10,6 +10,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var text = ""
+
+    var qrImage: NSImage? { text.generateQRCode() }
     
     let pasteboard: NSPasteboard = .general
     
@@ -35,11 +37,22 @@ struct ContentView: View {
                     
                     HStack {
                         Spacer()
-                        Image(nsImage: text.generateQRCode() ?? NSImage())
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 280, height: 280, alignment: .center)
-                            .padding(.bottom, 25)
+
+                        if let qrImage = qrImage {
+                            Image(nsImage: qrImage)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 280, height: 280, alignment: .center)
+                                .padding(.bottom, 25)
+                        } else {
+                            Text("The text is too large to fit in a QR code.\nTry making it shorter.")
+                                .foregroundColor(.secondary)
+                                .frame(width: 280, height: 280)
+                                .multilineTextAlignment(.center)
+                                .border(Color.secondary, width: 1)
+                                .padding(.bottom, 25)
+                        }
+
                         Spacer()
                     }
                 }
