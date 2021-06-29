@@ -45,8 +45,12 @@ struct ContentView: View {
                                 .frame(width: 280, height: 280, alignment: .center)
                                 .padding(.bottom, 25)
                         } else {
-                            Text("The text is too large to fit in a QR code. Try making it shorter.")
+                            Text("The text is too large to fit in a QR code.\nTry making it shorter.")
+                                .foregroundColor(.secondary)
                                 .frame(width: 280, height: 280)
+                                .multilineTextAlignment(.center)
+                                .border(Color.secondary, width: 1)
+                                .padding(.bottom, 25)
                         }
 
                         Spacer()
