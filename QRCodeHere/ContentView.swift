@@ -38,12 +38,13 @@ struct ContentView: View {
                     HStack {
                         Spacer()
 
-                        if let qrImage = qrImage {
+                        if let qrImage = qrImage, let qrImageDraggable = createQRDraggable() {
                             Image(nsImage: qrImage)
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 280, height: 280, alignment: .center)
                                 .padding(.bottom, 25)
+                                .onDrag { qrImageDraggable }
                         } else {
                             Text("The text is too large to fit in a QR code.\nTry making it shorter.")
                                 .foregroundColor(.secondary)
@@ -81,6 +82,29 @@ struct ContentView: View {
     private func openTwitter() {
         let url: URL = "https://twitter.com/cs4alhaider"
         NSWorkspace.shared.open(url)
+    }
+
+    /// Saves the generated QR code image in the temporary directory and creates an item provider for it.
+    ///
+    /// I chose the approach of saving the image to disk instead of creating the `NSItemProvider` directly using, say, `.init(item:typeIdentifyer:)`
+    /// to allow the  image to be dragged to more places like Finder and Safari.
+    /// - Returns: The item provider for the generated QR code image, or `nil` if any error occures (I haven't encountered any errors during my testing).
+    private func createQRDraggable() -> NSItemProvider? {
+        // The first representation is added in the `asNSImage` computed property of the `CIImage` extension.
+        let imageRepresentation = qrImage?.representations.first as? NSBitmapImageRep
+
+        // Get a PNG representation of the image.
+        let pngData = imageRepresentation?.representation(using: .png, properties: [:])
+
+        // Define the URL to write the temporary QR code to.
+        let temporaryDirectory = FileManager.default.temporaryDirectory
+        let filePath = temporaryDirectory.appendingPathComponent("QRCode.png")
+
+        try? pngData?.write(to: filePath)
+
+        let provider = NSItemProvider(contentsOf: filePath)
+
+        return provider
     }
 }
 
