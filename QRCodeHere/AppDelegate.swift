@@ -30,7 +30,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //        window.contentView = NSHostingView(rootView: contentView)
         //        window.makeKeyAndOrderFront(nil)
         
-        statusItem.button?.title = "QR"
+        statusItem.button?.title = "􀖂"
         statusItem.button?.action = #selector(showView)
     }
     

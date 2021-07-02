@@ -118,3 +118,17 @@ extension CIImage {
         return combinedFilter.outputImage!
     }
 }
+
+extension Binding {
+    
+    /// Adding backward compatibility for old macOS
+    func onChange(_ handler: @escaping (Value) -> Void) -> Binding<Value> {
+        Binding(
+            get: { wrappedValue },
+            set: { newValue in
+                wrappedValue = newValue
+                handler(newValue)
+            }
+        )
+    }
+}
