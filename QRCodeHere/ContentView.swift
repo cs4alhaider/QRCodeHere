@@ -8,12 +8,20 @@
 
 import SwiftUI
 
-struct ContentView: View {
-    @State private var text = ""
+#warning("TO-DO: Adding option to quit the app")
+#warning("TO-DO: Adding small view to manage user preferences like lunch app on login")
+#warning("TO-DO: Maybe adding coreData to save old QR Code contnet?")
 
-    var qrImage: NSImage? { text.generateQRCode() }
+struct ContentView: View {
     
     let pasteboard: NSPasteboard = .general
+    let defaults = UserDefaults.standard
+    
+    @State private var text = ""
+    
+    var qrImage: NSImage? {
+        text.generateQRCode()
+    }
     
     var pasteboardString: String {
         get { return pasteboard.string(forType: .string) ?? "" }
@@ -26,19 +34,20 @@ struct ContentView: View {
                 Section {
                     HStack {
                         Spacer()
-                        Text("Made with 💙 by ")
+                        Text("Open sourced with 💙 at ")
                             +
-                            Text("@cs4alhaider")
+                            Text("GitHub")
                                 .foregroundColor(.blue)
                         Spacer()
                     }
                     .padding(.bottom, 5)
-                    .onTapGesture(perform: openTwitter)
+                    .onTapGesture(perform: openGithub)
                     
                     HStack {
                         Spacer()
 
-                        if let qrImage = qrImage, let qrImageDraggable = createQRDraggable() {
+                        if let qrImage = qrImage,
+                           let qrImageDraggable = createQRDraggable() {
                             Image(nsImage: qrImage)
                                 .resizable()
                                 .scaledToFit()
@@ -63,7 +72,7 @@ struct ContentView: View {
                         .multilineTextAlignment(.center)
                         .lineLimit(0)
                     HStack {
-                        TextField("Enter your text here", text: $text)
+                        TextField("Enter your text here", text: $text.onChange(saveQRContent))
                         if !self.pasteboardString.isEmpty {
                             Button("Paste", action: appendCopidString)
                         }
@@ -73,15 +82,26 @@ struct ContentView: View {
             }
         }
         .padding(35)
+        .onAppear(perform: updateQRContent)
     }
     
     private func appendCopidString() {
         self.text = pasteboardString
     }
     
-    private func openTwitter() {
-        let url: URL = "https://twitter.com/cs4alhaider"
+    private func openGithub() {
+        let url: URL = "https://github.com/cs4alhaider/QRCodeHere"
         NSWorkspace.shared.open(url)
+    }
+    
+    private func saveQRContent(_ newContent: String) {
+        defaults.set(newContent, forKey: .qrCodeContent)
+    }
+    
+    private func updateQRContent() {
+        if let content = defaults.value(forKey: .qrCodeContent) as? String {
+            text = content
+        }
     }
 
     /// Saves the generated QR code image in the temporary directory and creates an item provider for it.
