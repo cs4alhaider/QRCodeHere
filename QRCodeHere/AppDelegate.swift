@@ -16,21 +16,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Create the SwiftUI view and set the context as the value for the managedObjectContext environment keyPath.
-        // Add `@Environment(\.managedObjectContext)` in the views that will need the context.
-        //        let contentView = ContentView().environment(\.managedObjectContext, persistentContainer.viewContext)
-        //
-        //        // Create the window and set the content view.
-        //        window = NSWindow(
-        //            contentRect: NSRect(x: 0, y: 0, width: 480, height: 300),
-        //            styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView],
-        //            backing: .buffered, defer: false)
-        //        window.center()
-        //        window.setFrameAutosaveName("Main Window")
-        //        window.contentView = NSHostingView(rootView: contentView)
-        //        window.makeKeyAndOrderFront(nil)
-        
         statusItem.button?.title = "􀖂"
+        statusItem.button?.target = self
         statusItem.button?.action = #selector(showView)
     }
     
@@ -50,10 +37,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                          of: button,
                          preferredEdge: .maxY)
         NSApp.activate(ignoringOtherApps: true)
-    }
-    
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
     }
     
     // MARK: - Core Data stack

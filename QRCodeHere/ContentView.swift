@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-#warning("TO-DO: Adding option to quit the app")
 #warning("TO-DO: Adding small view to manage user preferences like lunch app on login")
 #warning("TO-DO: Maybe adding coreData to save old QR Code contnet?")
 
@@ -29,7 +28,7 @@ struct ContentView: View {
     }
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .topTrailing) {
             Form {
                 Section {
                     HStack {
@@ -80,6 +79,10 @@ struct ContentView: View {
                 }
                 .frame(minWidth: 335)
             }
+
+            MenuView()
+                .frame(width: 55)
+                .offset(x: 38, y: -30)
         }
         .padding(35)
         .onAppear(perform: updateQRContent)
