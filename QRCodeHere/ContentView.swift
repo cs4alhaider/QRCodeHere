@@ -17,6 +17,8 @@ struct ContentView: View {
     let defaults = UserDefaults.standard
     
     @State private var text = ""
+    @State private var addWatermark = false
+    @State private var watermark = ""
     
     var qrImage: NSImage? {
         text.generateQRCode()
@@ -51,6 +53,7 @@ struct ContentView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 280, height: 280, alignment: .center)
+                                .watermarked(with: watermark.isEmpty ? nil : watermark)
                                 .padding(.bottom, 25)
                                 .onDrag { qrImageDraggable }
                         } else {
@@ -76,6 +79,7 @@ struct ContentView: View {
                             Button("Paste", action: appendCopidString)
                         }
                     }
+                    watermarkView
                 }
                 .frame(minWidth: 335)
             }
@@ -86,6 +90,25 @@ struct ContentView: View {
         }
         .padding(35)
         .onAppear(perform: updateQRContent)
+    }
+    
+    var watermarkView: some View {
+        Section {
+            if !addWatermark {
+                Button("Add watermark") {
+                    addWatermark.toggle()
+                }
+            }
+            if addWatermark {
+                HStack {
+                    TextField("Enter your watermark here", text: $watermark)
+                    Button("Cancle") {
+                        addWatermark.toggle()
+                        watermark = ""
+                    }
+                }
+            }
+        }
     }
     
     private func appendCopidString() {
@@ -113,6 +136,9 @@ struct ContentView: View {
     /// to allow the  image to be dragged to more places like Finder and Safari.
     /// - Returns: The item provider for the generated QR code image, or `nil` if any error occures (I haven't encountered any errors during my testing).
     private func createQRDraggable() -> NSItemProvider? {
+        
+        #warning("Need to add the watermark as part of this")
+        
         // The first representation is added in the `asNSImage` computed property of the `CIImage` extension.
         let imageRepresentation = qrImage?.representations.first as? NSBitmapImageRep
 
