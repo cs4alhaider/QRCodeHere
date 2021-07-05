@@ -28,7 +28,7 @@ struct ContentView: View {
     }
     
     var body: some View {
-        ZStack(alignment: .topLeading) {
+        ZStack(alignment: .topTrailing) {
             Form {
                 Section {
                     HStack {
@@ -81,7 +81,8 @@ struct ContentView: View {
             }
 
             MenuView()
-                .offset(x: -34, y: -30)
+                .frame(width: 55)
+                .offset(x: 38, y: -30)
         }
         .padding(35)
         .onAppear(perform: updateQRContent)
