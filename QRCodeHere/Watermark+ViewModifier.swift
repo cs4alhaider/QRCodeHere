@@ -15,18 +15,17 @@ struct Watermark: ViewModifier {
         if let text = text {
             ZStack {
                 Color.white
-                VStack {
+                VStack(spacing: 0) {
                     content
-                        .padding(.top, 20)
                     Text(text)
                         .font(.caption)
                         .foregroundColor(.black)
-                        .padding(5)
                         .padding(.bottom, 10)
                         .background(Color.white)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
+                .padding(5)
             }
+            .frame(width: .frame(.qrCodeView))
         } else {
             content
         }

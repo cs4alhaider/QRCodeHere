@@ -29,6 +29,10 @@ struct ContentView: View {
         set { pasteboard.setString(newValue, forType: .string) }
     }
     
+    var qrCodeCurrentFrame: CGFloat {
+        watermark.isEmpty ? .frame(.qrCodeView) : 256
+    }
+    
     var body: some View {
         ZStack(alignment: .topTrailing) {
             Form {
@@ -52,14 +56,15 @@ struct ContentView: View {
                             Image(nsImage: qrImage)
                                 .resizable()
                                 .scaledToFit()
-                                .frame(width: 280, height: 280, alignment: .center)
+                                .frame(width: qrCodeCurrentFrame, height: qrCodeCurrentFrame)
                                 .watermarked(with: watermark.isEmpty ? nil : watermark)
+                                .frame(maxHeight: .frame(.qrCodeView))
                                 .padding(.bottom, 25)
                                 .onDrag { qrImageDraggable }
                         } else {
                             Text("The text is too large to fit in a QR code.\nTry making it shorter.")
                                 .foregroundColor(.secondary)
-                                .frame(width: 280, height: 280)
+                                .frame(width: .frame(.qrCodeView), height: .frame(.qrCodeView))
                                 .multilineTextAlignment(.center)
                                 .border(Color.secondary, width: 1)
                                 .padding(.bottom, 25)
