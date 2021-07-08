@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4BDA28622690FA9E0079E48D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA28612690FA9E0079E48D /* MenuView.swift */; };
+		CB3757F32693A70D00F8F83F /* Watermark+ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3757F22693A70D00F8F83F /* Watermark+ViewModifier.swift */; };
 		CB80E1AD268EB29900F8AEC0 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80E1AC268EB29900F8AEC0 /* UserDefaults+Extension.swift */; };
+		CB89F69626979400005A67B9 /* Constent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89F69526979400005A67B9 /* Constent.swift */; };
 		DD64278323B3CB8900963498 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DD64278523B3CB8900963498 /* Localizable.strings */; };
 		DD64278823B3CD3C00963498 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64278723B3CD3C00963498 /* Extensions.swift */; };
 		DDDDD31323AFD6B2008F910C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDD31223AFD6B2008F910C /* AppDelegate.swift */; };
@@ -40,7 +42,9 @@
 
 /* Begin PBXFileReference section */
 		4BDA28612690FA9E0079E48D /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		CB3757F22693A70D00F8F83F /* Watermark+ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Watermark+ViewModifier.swift"; sourceTree = "<group>"; };
 		CB80E1AC268EB29900F8AEC0 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
+		CB89F69526979400005A67B9 /* Constent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constent.swift; sourceTree = "<group>"; };
 		DD64278423B3CB8900963498 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DD64278623B3CB9C00963498 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DD64278723B3CD3C00963498 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -113,6 +117,8 @@
 				DDDDD31423AFD6B2008F910C /* ContentView.swift */,
 				DD64278723B3CD3C00963498 /* Extensions.swift */,
 				CB80E1AC268EB29900F8AEC0 /* UserDefaults+Extension.swift */,
+				CB3757F22693A70D00F8F83F /* Watermark+ViewModifier.swift */,
+				CB89F69526979400005A67B9 /* Constent.swift */,
 				DDDDD31923AFD6B3008F910C /* Assets.xcassets */,
 				DDDDD31E23AFD6B3008F910C /* Main.storyboard */,
 				DDDDD32123AFD6B3008F910C /* Info.plist */,
@@ -291,9 +297,11 @@
 				DD64278823B3CD3C00963498 /* Extensions.swift in Sources */,
 				4BDA28622690FA9E0079E48D /* MenuView.swift in Sources */,
 				DDDDD31823AFD6B2008F910C /* QRCodeHere.xcdatamodeld in Sources */,
+				CB3757F32693A70D00F8F83F /* Watermark+ViewModifier.swift in Sources */,
 				DDDDD31523AFD6B2008F910C /* ContentView.swift in Sources */,
 				CB80E1AD268EB29900F8AEC0 /* UserDefaults+Extension.swift in Sources */,
 				DDDDD31323AFD6B2008F910C /* AppDelegate.swift in Sources */,
+				CB89F69626979400005A67B9 /* Constent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
