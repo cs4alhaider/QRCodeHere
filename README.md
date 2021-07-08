@@ -13,9 +13,9 @@ Using this url -> https://we.tl/t-YLit486qmX just unzip it, then copy it to your
 > If url not working you can simply download this by clicking on the green button (Clone or download -> Download ZIP) and navigate to `Assets` folder and you will find `QRCodeHere.app`, just copy it to your mac `Application` folder and then run it 
 
 
-## Author
+## Authors
 
-Abdullah Alhaider, [Twitter](https://twitter.com/cs4alhaider). 
+[Abdullah Alhaider](https://twitter.com/cs4alhaider) and [Abdulaziz Alobaili](https://twitter.com/alobaili).
 
 
 ## License
