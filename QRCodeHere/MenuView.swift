@@ -7,11 +7,13 @@
 //
 
 import SwiftUI
+import LaunchAtLogin
 
 struct MenuView: View {
     var body: some View {
         MenuButton("􀌇") {
             Button("Quit", action: quit)
+            LaunchAtLogin.Toggle()
         }
         .menuButtonStyle(BorderlessButtonMenuButtonStyle())
         .padding()

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,7 @@
 		CB3757F32693A70D00F8F83F /* Watermark+ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3757F22693A70D00F8F83F /* Watermark+ViewModifier.swift */; };
 		CB80E1AD268EB29900F8AEC0 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80E1AC268EB29900F8AEC0 /* UserDefaults+Extension.swift */; };
 		CB89F69626979400005A67B9 /* Constent.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89F69526979400005A67B9 /* Constent.swift */; };
+		CBDE3D10269B98FB00709D2E /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = CBDE3D0F269B98FB00709D2E /* LaunchAtLogin */; };
 		DD64278323B3CB8900963498 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DD64278523B3CB8900963498 /* Localizable.strings */; };
 		DD64278823B3CD3C00963498 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64278723B3CD3C00963498 /* Extensions.swift */; };
 		DDDDD31323AFD6B2008F910C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDDD31223AFD6B2008F910C /* AppDelegate.swift */; };
@@ -70,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBDE3D10269B98FB00709D2E /* LaunchAtLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +169,7 @@
 				DDDDD30B23AFD6B2008F910C /* Sources */,
 				DDDDD30C23AFD6B2008F910C /* Frameworks */,
 				DDDDD30D23AFD6B2008F910C /* Resources */,
+				CBDE3D11269B992400709D2E /* Launch at Login Helper */,
 			);
 			buildRules = (
 			);
@@ -174,6 +177,7 @@
 			);
 			name = QRCodeHere;
 			packageProductDependencies = (
+				CBDE3D0F269B98FB00709D2E /* LaunchAtLogin */,
 			);
 			productName = QRCodeHere;
 			productReference = DDDDD30F23AFD6B2008F910C /* QRCodeHere.app */;
@@ -249,6 +253,7 @@
 			);
 			mainGroup = DDDDD30623AFD6B2008F910C;
 			packageReferences = (
+				CBDE3D0E269B98FB00709D2E /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
 			);
 			productRefGroup = DDDDD31023AFD6B2008F910C /* Products */;
 			projectDirPath = "";
@@ -288,6 +293,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CBDE3D11269B992400709D2E /* Launch at Login Helper */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Launch at Login Helper";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${BUILT_PRODUCTS_DIR}/LaunchAtLogin_LaunchAtLogin.bundle/Contents/Resources/copy-helper-swiftpm.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DDDDD30B23AFD6B2008F910C /* Sources */ = {
@@ -482,6 +508,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"QRCodeHere/Preview Content\"";
 				DEVELOPMENT_TEAM = G69L3HCQBT;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -506,6 +533,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"QRCodeHere/Preview Content\"";
 				DEVELOPMENT_TEAM = G69L3HCQBT;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -646,6 +674,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CBDE3D0E269B98FB00709D2E /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CBDE3D0F269B98FB00709D2E /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBDE3D0E269B98FB00709D2E /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		DDDDD31623AFD6B2008F910C /* QRCodeHere.xcdatamodeld */ = {
