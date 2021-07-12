@@ -15,11 +15,16 @@ extension URL: ExpressibleByStringLiteral {
     }
 }
 
-extension String {
-    
-    func localized() -> String {
-        NSLocalizedString(self, comment: "")
+extension StringLiteralType {
+    func openURL() {
+        guard let url = URL(string: self) else {
+            return
+        }
+        NSWorkspace.shared.open(url)
     }
+}
+
+extension String {
     
     /// Returns a black and white QR code for this string (self).
     var qrImage: CIImage? {
@@ -29,6 +34,14 @@ extension String {
         
         let qrTransform = CGAffineTransform(scaleX: 20, y: 20)
         return qrFilter.outputImage?.transformed(by: qrTransform)
+    }
+    
+}
+
+extension String {
+    
+    func localized() -> String {
+        NSLocalizedString(self, comment: "")
     }
     
     /// Creates QR code NSImage from a string

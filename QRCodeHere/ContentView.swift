@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-#warning("TO-DO: Adding small view to manage user preferences like lunch app on login")
 #warning("TO-DO: Maybe adding coreData to save old QR Code contnet?")
 
 struct ContentView: View {
@@ -42,7 +41,7 @@ struct ContentView: View {
                         Text("Open sourced with 💙 at ")
                             +
                             Text("GitHub")
-                                .foregroundColor(.blue)
+                            .foregroundColor(.blue)
                         Spacer()
                     }
                     .padding(.bottom, 5)
@@ -50,12 +49,12 @@ struct ContentView: View {
                     
                     HStack {
                         Spacer()
-
+                        
                         if let qrImage = qrImage,
                            let qrImageDraggable = createQRDraggable() {
-                                image(from: qrImage)
-                                    .padding(.bottom, 25)
-                                    .onDrag { qrImageDraggable }
+                            image(from: qrImage)
+                                .padding(.bottom, 25)
+                                .onDrag { qrImageDraggable }
                         } else {
                             Text("The text is too large to fit in a QR code.\nTry making it shorter.")
                                 .foregroundColor(.secondary)
@@ -64,7 +63,7 @@ struct ContentView: View {
                                 .border(Color.secondary, width: 1)
                                 .padding(.bottom, 25)
                         }
-
+                        
                         Spacer()
                     }
                 }
@@ -83,7 +82,7 @@ struct ContentView: View {
                 }
                 .frame(minWidth: 335)
             }
-
+            
             MenuView()
                 .frame(width: 55)
                 .offset(x: 38, y: -30)
@@ -91,7 +90,7 @@ struct ContentView: View {
         .padding(35)
         .onAppear(perform: updateQRContent)
     }
-
+    
     func image(from nsImage: NSImage) -> some View {
         Image(nsImage: nsImage)
             .resizable()
@@ -105,15 +104,14 @@ struct ContentView: View {
         Section {
             if !addWatermark {
                 Button("Add watermark") {
-                    addWatermark.toggle()
+                    toggleWatermark()
                 }
-            }
-            if addWatermark {
+            } else {
                 HStack {
-                    TextField("Enter your watermark here", text: $watermark)
+                    TextField("Enter your watermark here", text: $watermark.onChange(saveWatermarkContent))
                     Button("Cancle") {
-                        addWatermark.toggle()
                         watermark = ""
+                        toggleWatermark()
                     }
                 }
             }
@@ -133,12 +131,26 @@ struct ContentView: View {
         defaults.set(newContent, forKey: .qrCodeContent)
     }
     
+    private func saveWatermarkContent(_ newContent: String) {
+        defaults.set(newContent, forKey: .watermarkContent)
+    }
+    
     private func updateQRContent() {
         if let content = defaults.value(forKey: .qrCodeContent) as? String {
             text = content
         }
+        
+        if let watermarkContent = defaults.value(forKey: .watermarkContent) as? String {
+            watermark = watermarkContent
+        }
     }
-
+    
+    private func toggleWatermark() {
+        withAnimation(.easeInOut(duration: 0.2)) {
+            addWatermark.toggle()
+        }
+    }
+    
     /// Saves the generated QR code image in the temporary directory and creates an item provider for it.
     ///
     /// I chose the approach of saving the image to disk instead of creating the `NSItemProvider` directly using, say, `.init(item:typeIdentifyer:)`
@@ -146,26 +158,26 @@ struct ContentView: View {
     /// - Returns: The item provider for the generated QR code image, or `nil` if any error occures (I haven't encountered any errors during my testing).
     private func createQRDraggable() -> NSItemProvider? {
         guard let qrImage = qrImage else { return nil }
-
+        
         let imageView = image(from: qrImage)
         let dimension = CGFloat.frame(.qrCodeView)
         let size = CGSize(width: dimension, height: dimension)
-
+        
         guard let image = imageView.rasterize(at: size) else { return nil }
         
         guard let imageRepresentation = NSBitmapImageRep(data: image.tiffRepresentation!) else { return nil }
-
+        
         // Get a PNG representation of the image.
         let pngData = imageRepresentation.representation(using: .png, properties: [:])
-
+        
         // Define the URL to write the temporary QR code to.
         let temporaryDirectory = FileManager.default.temporaryDirectory
         let filePath = temporaryDirectory.appendingPathComponent("QRCode.png")
-
+        
         try? pngData?.write(to: filePath)
-
+        
         let provider = NSItemProvider(contentsOf: filePath)
-
+        
         return provider
     }
 }
