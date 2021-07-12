@@ -53,14 +53,9 @@ struct ContentView: View {
 
                         if let qrImage = qrImage,
                            let qrImageDraggable = createQRDraggable() {
-                            Image(nsImage: qrImage)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: qrCodeCurrentFrame, height: qrCodeCurrentFrame)
-                                .watermarked(with: watermark.isEmpty ? nil : watermark)
-                                .frame(maxHeight: .frame(.qrCodeView))
-                                .padding(.bottom, 25)
-                                .onDrag { qrImageDraggable }
+                                image(from: qrImage)
+                                    .padding(.bottom, 25)
+                                    .onDrag { qrImageDraggable }
                         } else {
                             Text("The text is too large to fit in a QR code.\nTry making it shorter.")
                                 .foregroundColor(.secondary)
@@ -95,6 +90,15 @@ struct ContentView: View {
         }
         .padding(35)
         .onAppear(perform: updateQRContent)
+    }
+
+    func image(from nsImage: NSImage) -> some View {
+        Image(nsImage: nsImage)
+            .resizable()
+            .scaledToFit()
+            .frame(width: qrCodeCurrentFrame, height: qrCodeCurrentFrame)
+            .watermarked(with: watermark.isEmpty ? nil : watermark)
+            .frame(maxHeight: .frame(.qrCodeView))
     }
     
     var watermarkView: some View {
@@ -141,14 +145,18 @@ struct ContentView: View {
     /// to allow the  image to be dragged to more places like Finder and Safari.
     /// - Returns: The item provider for the generated QR code image, or `nil` if any error occures (I haven't encountered any errors during my testing).
     private func createQRDraggable() -> NSItemProvider? {
+        guard let qrImage = qrImage else { return nil }
+
+        let imageView = image(from: qrImage)
+        let dimension = CGFloat.frame(.qrCodeView)
+        let size = CGSize(width: dimension, height: dimension)
+
+        guard let image = imageView.rasterize(at: size) else { return nil }
         
-        #warning("Need to add the watermark as part of this")
-        
-        // The first representation is added in the `asNSImage` computed property of the `CIImage` extension.
-        let imageRepresentation = qrImage?.representations.first as? NSBitmapImageRep
+        guard let imageRepresentation = NSBitmapImageRep(data: image.tiffRepresentation!) else { return nil }
 
         // Get a PNG representation of the image.
-        let pngData = imageRepresentation?.representation(using: .png, properties: [:])
+        let pngData = imageRepresentation.representation(using: .png, properties: [:])
 
         // Define the URL to write the temporary QR code to.
         let temporaryDirectory = FileManager.default.temporaryDirectory
