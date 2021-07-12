@@ -132,3 +132,25 @@ extension Binding {
         )
     }
 }
+
+extension View {
+    private func rasterizeBitmap(at size: CGSize) -> NSBitmapImageRep? {
+        let nsView = NSHostingView(rootView: self.frame(width: size.width, height: size.height))
+        nsView.frame.size = size
+
+        guard let bitmapRep = nsView.bitmapImageRepForCachingDisplay(in: nsView.bounds) else { return nil }
+
+        bitmapRep.size = nsView.bounds.size
+        nsView.cacheDisplay(in: nsView.bounds, to: bitmapRep)
+        return bitmapRep
+    }
+
+    func rasterize(at size: CGSize) -> NSImage? {
+        let image = NSImage(size: size)
+
+        guard let representation = self.rasterizeBitmap(at: size) else { return nil }
+
+        image.addRepresentation(representation)
+        return image
+    }
+}

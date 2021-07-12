@@ -27,10 +27,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard let button = statusItem.button else {
             fatalError("Coudn't find status item button.")
         }
-        
+
         let popoverView = NSPopover()
         popoverView.animates = true
-        popoverView.delegate = self
         popoverView.contentViewController = NSHostingController(rootView: contentView)
         popoverView.behavior = .transient
         popoverView.show(relativeTo: button.bounds,
@@ -135,9 +134,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // If we got here, it is time to quit.
         return .terminateNow
     }
-    
-}
-
-extension AppDelegate: NSPopoverDelegate {
     
 }
