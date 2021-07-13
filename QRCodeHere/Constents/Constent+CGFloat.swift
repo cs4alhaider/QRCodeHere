@@ -1,5 +1,5 @@
 //
-//  Constent.swift
+//  Constent+CGFloat.swift
 //  QRCodeHere
 //
 //  Created by Abdullah Alhaider on 08/07/2021.

@@ -11,9 +11,11 @@ import LaunchAtLogin
 
 struct MenuView: View {
     var body: some View {
-        MenuButton("􀌇") {
-            Button("Quit", action: quit)
+        MenuButton("􀍟") {
+            Button("GitHub", action: String.url(.githubProject).openURL)
             LaunchAtLogin.Toggle()
+            Divider()
+            Button("Quit", action: quit)
         }
         .menuButtonStyle(BorderlessButtonMenuButtonStyle())
         .padding()

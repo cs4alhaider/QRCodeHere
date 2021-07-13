@@ -11,6 +11,7 @@ import Foundation
 extension UserDefaults {
     enum Keys: String {
         case qrCodeContent = "UserDefaults.Keys.QR_CODE_CONTENT"
+        case watermarkContent = "UserDefaults.Keys.QR_CODE_WATERMARK"
     }
     
     // Adding backward compatibility for old macOS since @AppStorage requires macOS v11
