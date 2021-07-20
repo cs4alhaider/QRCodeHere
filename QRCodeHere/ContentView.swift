@@ -102,16 +102,12 @@ struct ContentView: View {
     
     var watermarkView: some View {
         Section {
-            if !addWatermark {
-                Button("Add watermark") {
-                    toggleWatermark()
-                }
-            } else {
-                HStack {
-                    TextField("Enter your watermark here", text: $watermark.onChange(saveWatermarkContent))
-                    Button("Cancle") {
+            HStack {
+                TextField("Enter your watermark here", text: $watermark.onChange(saveWatermarkContent))
+                if !watermark.isEmpty {
+                    Button("Remove watermark") {
                         watermark = ""
-                        toggleWatermark()
+                        saveWatermarkContent("")
                     }
                 }
             }
@@ -142,6 +138,7 @@ struct ContentView: View {
         
         if let watermarkContent = defaults.value(forKey: .watermarkContent) as? String {
             watermark = watermarkContent
+            addWatermark = false
         }
     }
     

@@ -16,9 +16,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        statusItem.button?.title = "􀖂"
         statusItem.button?.target = self
         statusItem.button?.action = #selector(showView)
+        guard let logo = NSImage(named: NSImage.Name("status-icon")) else { return }
+        
+        let resizedLogo = NSImage(size: NSSize(width: 18, height: 18), flipped: false) { (dstRect) -> Bool in
+            logo.draw(in: dstRect)
+            return true
+        }
+        resizedLogo.isTemplate = true
+        statusItem.button?.image = resizedLogo
     }
     
     @objc func showView() {
