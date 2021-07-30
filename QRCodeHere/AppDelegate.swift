@@ -16,6 +16,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        setupStatusItem()
+    }
+    
+    func setupStatusItem() {
         statusItem.button?.target = self
         statusItem.button?.action = #selector(showView)
         guard let logo = NSImage(named: NSImage.Name("status-icon")) else { return }
@@ -29,7 +33,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @objc func showView() {
-        let contentView = ContentView().environment(\.managedObjectContext, persistentContainer.viewContext)
+        let contentView = ContentView()
+            .environment(\.managedObjectContext, persistentContainer.viewContext)
+            .environmentObject(Store.shared)
         
         guard let button = statusItem.button else {
             fatalError("Coudn't find status item button.")

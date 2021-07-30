@@ -10,7 +10,14 @@
 		4BDA28622690FA9E0079E48D /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDA28612690FA9E0079E48D /* MenuView.swift */; };
 		CB3757F32693A70D00F8F83F /* Watermark+ViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB3757F22693A70D00F8F83F /* Watermark+ViewModifier.swift */; };
 		CB80E1AD268EB29900F8AEC0 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80E1AC268EB29900F8AEC0 /* UserDefaults+Extension.swift */; };
+		CB826BDE26B46D3F008C0FFE /* Sequence+Extesnion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB826BDD26B46D3F008C0FFE /* Sequence+Extesnion.swift */; };
+		CB826BE026B46DAC008C0FFE /* SupportDeveloperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB826BDF26B46DAC008C0FFE /* SupportDeveloperView.swift */; };
+		CB826BE226B49177008C0FFE /* BottomSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB826BE126B49177008C0FFE /* BottomSection.swift */; };
 		CB89F69626979400005A67B9 /* Constent+CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB89F69526979400005A67B9 /* Constent+CGFloat.swift */; };
+		CBBCFD4B26AF5EB60031925D /* SwiftyStoreKit in Frameworks */ = {isa = PBXBuildFile; productRef = CBBCFD4A26AF5EB60031925D /* SwiftyStoreKit */; };
+		CBBCFD4E26AF62870031925D /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCFD4D26AF62870031925D /* Store.swift */; };
+		CBBCFD5026AF64200031925D /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBCFD4F26AF64200031925D /* Product.swift */; };
+		CBBCFD5226AF6A560031925D /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = CBBCFD5126AF6A560031925D /* Configuration.storekit */; };
 		CBD1133A269CDF70000E25B0 /* Constent+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBD11339269CDF70000E25B0 /* Constent+String.swift */; };
 		CBDE3D10269B98FB00709D2E /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = CBDE3D0F269B98FB00709D2E /* LaunchAtLogin */; };
 		DD64278323B3CB8900963498 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = DD64278523B3CB8900963498 /* Localizable.strings */; };
@@ -46,7 +53,13 @@
 		4BDA28612690FA9E0079E48D /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		CB3757F22693A70D00F8F83F /* Watermark+ViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Watermark+ViewModifier.swift"; sourceTree = "<group>"; };
 		CB80E1AC268EB29900F8AEC0 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
+		CB826BDD26B46D3F008C0FFE /* Sequence+Extesnion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extesnion.swift"; sourceTree = "<group>"; };
+		CB826BDF26B46DAC008C0FFE /* SupportDeveloperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportDeveloperView.swift; sourceTree = "<group>"; };
+		CB826BE126B49177008C0FFE /* BottomSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSection.swift; sourceTree = "<group>"; };
 		CB89F69526979400005A67B9 /* Constent+CGFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constent+CGFloat.swift"; sourceTree = "<group>"; };
+		CBBCFD4D26AF62870031925D /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		CBBCFD4F26AF64200031925D /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		CBBCFD5126AF6A560031925D /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		CBD11339269CDF70000E25B0 /* Constent+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constent+String.swift"; sourceTree = "<group>"; };
 		DD64278423B3CB8900963498 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DD64278623B3CB9C00963498 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -74,6 +87,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBDE3D10269B98FB00709D2E /* LaunchAtLogin in Frameworks */,
+				CBBCFD4B26AF5EB60031925D /* SwiftyStoreKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +108,53 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB826BE326B4929B008C0FFE /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				CBBCFD4D26AF62870031925D /* Store.swift */,
+				CBBCFD4F26AF64200031925D /* Product.swift */,
+				CBBCFD5126AF6A560031925D /* Configuration.storekit */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		CB826BE426B492AF008C0FFE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DDDDD31423AFD6B2008F910C /* ContentView.swift */,
+				CB826BE126B49177008C0FFE /* BottomSection.swift */,
+				CB826BDF26B46DAC008C0FFE /* SupportDeveloperView.swift */,
+				4BDA28612690FA9E0079E48D /* MenuView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CB826BE526B492C2008C0FFE /* Extesnions */ = {
+			isa = PBXGroup;
+			children = (
+				DD64278723B3CD3C00963498 /* Extensions.swift */,
+				CB80E1AC268EB29900F8AEC0 /* UserDefaults+Extension.swift */,
+				CB826BDD26B46D3F008C0FFE /* Sequence+Extesnion.swift */,
+			);
+			path = Extesnions;
+			sourceTree = "<group>";
+		};
+		CB826BE626B492D9008C0FFE /* ViewModifier */ = {
+			isa = PBXGroup;
+			children = (
+				CB3757F22693A70D00F8F83F /* Watermark+ViewModifier.swift */,
+			);
+			path = ViewModifier;
+			sourceTree = "<group>";
+		};
+		CBBCFD4C26AF62740031925D /* Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				CB826BE326B4929B008C0FFE /* Store */,
+			);
+			path = Wrappers;
+			sourceTree = "<group>";
+		};
 		CBD11338269CDF64000E25B0 /* Constents */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,11 +188,10 @@
 			isa = PBXGroup;
 			children = (
 				DDDDD31223AFD6B2008F910C /* AppDelegate.swift */,
-				DDDDD31423AFD6B2008F910C /* ContentView.swift */,
-				4BDA28612690FA9E0079E48D /* MenuView.swift */,
-				DD64278723B3CD3C00963498 /* Extensions.swift */,
-				CB80E1AC268EB29900F8AEC0 /* UserDefaults+Extension.swift */,
-				CB3757F22693A70D00F8F83F /* Watermark+ViewModifier.swift */,
+				CBBCFD4C26AF62740031925D /* Wrappers */,
+				CB826BE426B492AF008C0FFE /* Views */,
+				CB826BE526B492C2008C0FFE /* Extesnions */,
+				CB826BE626B492D9008C0FFE /* ViewModifier */,
 				CBD11338269CDF64000E25B0 /* Constents */,
 				DDDDD31923AFD6B3008F910C /* Assets.xcassets */,
 				DDDDD31E23AFD6B3008F910C /* Main.storyboard */,
@@ -189,6 +249,7 @@
 			name = QRCodeHere;
 			packageProductDependencies = (
 				CBDE3D0F269B98FB00709D2E /* LaunchAtLogin */,
+				CBBCFD4A26AF5EB60031925D /* SwiftyStoreKit */,
 			);
 			productName = QRCodeHere;
 			productReference = DDDDD30F23AFD6B2008F910C /* QRCodeHere.app */;
@@ -265,6 +326,7 @@
 			mainGroup = DDDDD30623AFD6B2008F910C;
 			packageReferences = (
 				CBDE3D0E269B98FB00709D2E /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
+				CBBCFD4926AF5EB60031925D /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */,
 			);
 			productRefGroup = DDDDD31023AFD6B2008F910C /* Products */;
 			projectDirPath = "";
@@ -283,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDDDD32023AFD6B3008F910C /* Main.storyboard in Resources */,
+				CBBCFD5226AF6A560031925D /* Configuration.storekit in Resources */,
 				DD64278323B3CB8900963498 /* Localizable.strings in Resources */,
 				DDDDD31D23AFD6B3008F910C /* Preview Assets.xcassets in Resources */,
 				DDDDD31A23AFD6B3008F910C /* Assets.xcassets in Resources */,
@@ -333,11 +396,16 @@
 			files = (
 				DD64278823B3CD3C00963498 /* Extensions.swift in Sources */,
 				4BDA28622690FA9E0079E48D /* MenuView.swift in Sources */,
+				CB826BE226B49177008C0FFE /* BottomSection.swift in Sources */,
 				DDDDD31823AFD6B2008F910C /* QRCodeHere.xcdatamodeld in Sources */,
 				CB3757F32693A70D00F8F83F /* Watermark+ViewModifier.swift in Sources */,
+				CB826BDE26B46D3F008C0FFE /* Sequence+Extesnion.swift in Sources */,
 				DDDDD31523AFD6B2008F910C /* ContentView.swift in Sources */,
+				CBBCFD5026AF64200031925D /* Product.swift in Sources */,
+				CBBCFD4E26AF62870031925D /* Store.swift in Sources */,
 				CB80E1AD268EB29900F8AEC0 /* UserDefaults+Extension.swift in Sources */,
 				CBD1133A269CDF70000E25B0 /* Constent+String.swift in Sources */,
+				CB826BE026B46DAC008C0FFE /* SupportDeveloperView.swift in Sources */,
 				DDDDD31323AFD6B2008F910C /* AppDelegate.swift in Sources */,
 				CB89F69626979400005A67B9 /* Constent+CGFloat.swift in Sources */,
 			);
@@ -690,6 +758,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CBBCFD4926AF5EB60031925D /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bizz84/SwiftyStoreKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.16.3;
+			};
+		};
 		CBDE3D0E269B98FB00709D2E /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
@@ -701,6 +777,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CBBCFD4A26AF5EB60031925D /* SwiftyStoreKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CBBCFD4926AF5EB60031925D /* XCRemoteSwiftPackageReference "SwiftyStoreKit" */;
+			productName = SwiftyStoreKit;
+		};
 		CBDE3D0F269B98FB00709D2E /* LaunchAtLogin */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CBDE3D0E269B98FB00709D2E /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;

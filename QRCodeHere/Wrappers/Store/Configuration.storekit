@@ -1,0 +1,63 @@
+{
+  "identifier" : "5001E03D",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "0.99",
+      "familyShareable" : false,
+      "internalID" : "7126CF1B",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "Small Coffee",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "net.alhaider.QRCodeHere.store.support.smallSupport",
+      "referenceName" : "Small support",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "2.99",
+      "familyShareable" : false,
+      "internalID" : "C50A96C6",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "Big Coffee",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "net.alhaider.QRCodeHere.store.support.midSupport",
+      "referenceName" : "Mid support",
+      "type" : "Consumable"
+    },
+    {
+      "displayPrice" : "9.99",
+      "familyShareable" : false,
+      "internalID" : "34AF60DD",
+      "localizations" : [
+        {
+          "description" : "",
+          "displayName" : "Lunch",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "net.alhaider.QRCodeHere.store.support.bigSupport",
+      "referenceName" : "Big support",
+      "type" : "Consumable"
+    }
+  ],
+  "settings" : {
+
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 1,
+    "minor" : 1
+  }
+}

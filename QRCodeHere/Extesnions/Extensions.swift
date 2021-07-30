@@ -13,6 +13,10 @@ extension URL: ExpressibleByStringLiteral {
     public init(stringLiteral value: String) {
         self = URL(string: value)!
     }
+    
+    func openURL() {
+        NSWorkspace.shared.open(self)
+    }
 }
 
 extension StringLiteralType {

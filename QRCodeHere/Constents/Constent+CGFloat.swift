@@ -12,7 +12,7 @@ extension CGFloat {
     
     enum FrameValue: CGFloat {
         /// Value for QR code width and height
-        case qrCodeView = 280
+        case qrCodeView = 350
     }
     
     static func frame(_ forValue: FrameValue) -> CGFloat {

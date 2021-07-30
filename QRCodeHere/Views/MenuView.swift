@@ -12,7 +12,7 @@ import LaunchAtLogin
 struct MenuView: View {
     var body: some View {
         MenuButton("􀍟") {
-            Button("GitHub", action: String.url(.githubProject).openURL)
+            Button("GitHub", action: String.stringURL(.githubRepo).openURL)
             LaunchAtLogin.Toggle()
             Divider()
             Button("Quit", action: quit)

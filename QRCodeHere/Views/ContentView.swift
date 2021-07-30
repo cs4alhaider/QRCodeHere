@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-
+import StoreKit
 #warning("TO-DO: Maybe adding coreData to save old QR Code contnet?")
 
 struct ContentView: View {
@@ -25,11 +25,10 @@ struct ContentView: View {
     
     var pasteboardString: String {
         get { return pasteboard.string(forType: .string) ?? "" }
-        set { pasteboard.setString(newValue, forType: .string) }
     }
     
     var qrCodeCurrentFrame: CGFloat {
-        watermark.isEmpty ? .frame(.qrCodeView) : 256
+        watermark.isEmpty ? .frame(.qrCodeView) : 320
     }
     
     var body: some View {
@@ -81,6 +80,13 @@ struct ContentView: View {
                     watermarkView
                 }
                 .frame(minWidth: 335)
+                
+                Section {
+                    Divider()
+                        .padding(.vertical)
+                }
+                
+                BottomSection()
             }
             
             MenuView()
@@ -132,10 +138,6 @@ struct ContentView: View {
     }
     
     private func updateQRContent() {
-        if let content = defaults.value(forKey: .qrCodeContent) as? String {
-            text = content
-        }
-        
         if let watermarkContent = defaults.value(forKey: .watermarkContent) as? String {
             watermark = watermarkContent
             addWatermark = false
@@ -146,6 +148,11 @@ struct ContentView: View {
         withAnimation(.easeInOut(duration: 0.2)) {
             addWatermark.toggle()
         }
+    }
+    
+    private func copy(_ value: String) {
+        pasteboard.declareTypes([.string], owner: nil)
+        pasteboard.setString(value, forType: .string)
     }
     
     /// Saves the generated QR code image in the temporary directory and creates an item provider for it.

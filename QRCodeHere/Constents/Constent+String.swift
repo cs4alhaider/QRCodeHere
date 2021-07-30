@@ -10,11 +10,14 @@ import Foundation
 
 extension String {
     
-    enum staticURLs: StringLiteralType {
-        case githubProject = "https://github.com/cs4alhaider/QRCodeHere"
+    enum URLValue: String {
+        case githubRepo = "https://github.com/cs4alhaider/QRCodeHere"
+        case appStoreReviewLink = "https://apps.apple.com/app/id1577042983?action=write-review"
+        case appStorePage = "https://apps.apple.com/app/id1577042983"
+        case abdullahAppStorePage = "https://apps.apple.com/us/developer/abdullah-alhaider/id1332762194"
     }
     
-    static func url(_ forValue: staticURLs) -> StringLiteralType {
+    static func stringURL(_ forValue: URLValue) -> String {
         forValue.rawValue
     }
 }
