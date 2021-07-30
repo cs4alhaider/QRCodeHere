@@ -125,8 +125,8 @@ struct ContentView: View {
     }
     
     private func openGithub() {
-        let url: URL = "https://github.com/cs4alhaider/QRCodeHere"
-        NSWorkspace.shared.open(url)
+        let url: String = .stringURL(.githubRepo)
+        url.openURL()
     }
     
     private func saveQRContent(_ newContent: String) {

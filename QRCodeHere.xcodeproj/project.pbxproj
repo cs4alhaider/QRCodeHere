@@ -147,6 +147,19 @@
 			path = ViewModifier;
 			sourceTree = "<group>";
 		};
+		CB826BE726B493E9008C0FFE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DDDDD31923AFD6B3008F910C /* Assets.xcassets */,
+				DDDDD31E23AFD6B3008F910C /* Main.storyboard */,
+				DDDDD32123AFD6B3008F910C /* Info.plist */,
+				DDDDD32223AFD6B3008F910C /* QRCodeHere.entitlements */,
+				DDDDD31623AFD6B2008F910C /* QRCodeHere.xcdatamodeld */,
+				DD64278523B3CB8900963498 /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		CBBCFD4C26AF62740031925D /* Wrappers */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,16 +203,11 @@
 				DDDDD31223AFD6B2008F910C /* AppDelegate.swift */,
 				CBBCFD4C26AF62740031925D /* Wrappers */,
 				CB826BE426B492AF008C0FFE /* Views */,
-				CB826BE526B492C2008C0FFE /* Extesnions */,
 				CB826BE626B492D9008C0FFE /* ViewModifier */,
+				CB826BE526B492C2008C0FFE /* Extesnions */,
 				CBD11338269CDF64000E25B0 /* Constents */,
-				DDDDD31923AFD6B3008F910C /* Assets.xcassets */,
-				DDDDD31E23AFD6B3008F910C /* Main.storyboard */,
-				DDDDD32123AFD6B3008F910C /* Info.plist */,
-				DDDDD32223AFD6B3008F910C /* QRCodeHere.entitlements */,
-				DDDDD31623AFD6B2008F910C /* QRCodeHere.xcdatamodeld */,
+				CB826BE726B493E9008C0FFE /* Resources */,
 				DDDDD31B23AFD6B3008F910C /* Preview Content */,
-				DD64278523B3CB8900963498 /* Localizable.strings */,
 			);
 			path = QRCodeHere;
 			sourceTree = "<group>";
@@ -588,18 +596,18 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"QRCodeHere/Preview Content\"";
 				DEVELOPMENT_TEAM = G69L3HCQBT;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = QRCodeHere/Info.plist;
+				INFOPLIST_FILE = QRCodeHere/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = net.alhaider.QRCodeHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -614,18 +622,18 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"QRCodeHere/Preview Content\"";
 				DEVELOPMENT_TEAM = G69L3HCQBT;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = QRCodeHere/Info.plist;
+				INFOPLIST_FILE = QRCodeHere/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = net.alhaider.QRCodeHere;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
