@@ -7,29 +7,9 @@
 //
 
 import SwiftUI
-import StoreKit
-#warning("TO-DO: Maybe adding coreData to save old QR Code contnet?")
 
 struct ContentView: View {
-    
-    let pasteboard: NSPasteboard = .general
-    let defaults = UserDefaults.standard
-    
-    @State private var text = ""
-    @State private var addWatermark = false
-    @State private var watermark = ""
-    
-    var qrImage: NSImage? {
-        text.generateQRCode()
-    }
-    
-    var pasteboardString: String {
-        get { return pasteboard.string(forType: .string) ?? "" }
-    }
-    
-    var qrCodeCurrentFrame: CGFloat {
-        watermark.isEmpty ? .frame(.qrCodeView) : 320
-    }
+    @StateObject private var vm = ViewModel()
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
@@ -44,14 +24,14 @@ struct ContentView: View {
                         Spacer()
                     }
                     .padding(.bottom, 5)
-                    .onTapGesture(perform: openGithub)
+                    .onTapGesture(perform: vm.openGithub)
                     
                     HStack {
                         Spacer()
                         
-                        if let qrImage = qrImage,
-                           let qrImageDraggable = createQRDraggable() {
-                            image(from: qrImage)
+                        if let qrImage = vm.qrImage,
+                           let qrImageDraggable = vm.createQRDraggable() {
+                            vm.image(from: qrImage)
                                 .padding(.bottom, 25)
                                 .onDrag { qrImageDraggable }
                         } else {
@@ -72,9 +52,9 @@ struct ContentView: View {
                         .multilineTextAlignment(.center)
                         .lineLimit(0)
                     HStack {
-                        TextField("Enter your text here", text: $text.onChange(saveQRContent))
-                        if !self.pasteboardString.isEmpty {
-                            Button("Paste", action: appendCopidString)
+                        TextField("Enter your text here", text: $vm.text.onChange(vm.saveQRContent))
+                        if !vm.pasteboardString.isEmpty {
+                            Button("Paste", action: vm.appendCopidString)
                         }
                     }
                     watermarkView
@@ -94,96 +74,23 @@ struct ContentView: View {
                 .offset(x: 38, y: -30)
         }
         .padding(35)
-        .onAppear(perform: updateQRContent)
-    }
-    
-    func image(from nsImage: NSImage) -> some View {
-        Image(nsImage: nsImage)
-            .resizable()
-            .scaledToFit()
-            .frame(width: qrCodeCurrentFrame, height: qrCodeCurrentFrame)
-            .watermarked(with: watermark.isEmpty ? nil : watermark)
-            .frame(maxHeight: .frame(.qrCodeView))
+        .onAppear(perform: vm.updateQRContent)
     }
     
     var watermarkView: some View {
         Section {
             HStack {
-                TextField("Enter your watermark here", text: $watermark.onChange(saveWatermarkContent))
-                if !watermark.isEmpty {
+                TextField("Enter your watermark here", text: $vm.watermark.onChange(vm.saveWatermarkContent))
+                if !vm.watermark.isEmpty {
                     Button("Remove watermark") {
-                        watermark = ""
-                        saveWatermarkContent("")
+                        vm.watermark = ""
+                        vm.saveWatermarkContent("")
                     }
                 }
             }
         }
     }
     
-    private func appendCopidString() {
-        self.text = pasteboardString
-    }
-    
-    private func openGithub() {
-        let url: String = .stringURL(.githubRepo)
-        url.openURL()
-    }
-    
-    private func saveQRContent(_ newContent: String) {
-        defaults.set(newContent, forKey: .qrCodeContent)
-    }
-    
-    private func saveWatermarkContent(_ newContent: String) {
-        defaults.set(newContent, forKey: .watermarkContent)
-    }
-    
-    private func updateQRContent() {
-        if let watermarkContent = defaults.value(forKey: .watermarkContent) as? String {
-            watermark = watermarkContent
-            addWatermark = false
-        }
-    }
-    
-    private func toggleWatermark() {
-        withAnimation(.easeInOut(duration: 0.2)) {
-            addWatermark.toggle()
-        }
-    }
-    
-    private func copy(_ value: String) {
-        pasteboard.declareTypes([.string], owner: nil)
-        pasteboard.setString(value, forType: .string)
-    }
-    
-    /// Saves the generated QR code image in the temporary directory and creates an item provider for it.
-    ///
-    /// I chose the approach of saving the image to disk instead of creating the `NSItemProvider` directly using, say, `.init(item:typeIdentifyer:)`
-    /// to allow the  image to be dragged to more places like Finder and Safari.
-    /// - Returns: The item provider for the generated QR code image, or `nil` if any error occures (I haven't encountered any errors during my testing).
-    private func createQRDraggable() -> NSItemProvider? {
-        guard let qrImage = qrImage else { return nil }
-        
-        let imageView = image(from: qrImage)
-        let dimension = CGFloat.frame(.qrCodeView)
-        let size = CGSize(width: dimension, height: dimension)
-        
-        guard let image = imageView.rasterize(at: size) else { return nil }
-        
-        guard let imageRepresentation = NSBitmapImageRep(data: image.tiffRepresentation!) else { return nil }
-        
-        // Get a PNG representation of the image.
-        let pngData = imageRepresentation.representation(using: .png, properties: [:])
-        
-        // Define the URL to write the temporary QR code to.
-        let temporaryDirectory = FileManager.default.temporaryDirectory
-        let filePath = temporaryDirectory.appendingPathComponent("QRCode.png")
-        
-        try? pngData?.write(to: filePath)
-        
-        let provider = NSItemProvider(contentsOf: filePath)
-        
-        return provider
-    }
 }
 
 
