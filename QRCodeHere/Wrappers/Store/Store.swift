@@ -73,10 +73,10 @@ extension Store {
         fetchedProducts.first(where: { $0.productIdentifier == identifer })
     }
     
-    func purchaseProduct(_ product: SKProduct) {
+    func purchaseProduct(_ product: Product) {
         buyingProductInProgress = true
         startObservingPaymentQueue()
-        buy(product) { transaction in
+        buy(product.skProduct) { transaction in
             self.buyingProductInProgress = false
             if let transaction = transaction {
                 print(transaction)

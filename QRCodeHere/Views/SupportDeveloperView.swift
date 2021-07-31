@@ -13,14 +13,14 @@ struct SupportDeveloperView: View {
     @EnvironmentObject private var store: Store
     
     var body: some View {
-        Menu("😍 Suuport me") {
+        Menu {
             ForEach(store.allProducts) { product in
-                Button("\(product.title) - \(product.price ?? "N/A")") {
-                    if let product = store.product(for: product.productIdentifier) {
-                        store.purchaseProduct(product)
-                    }
+                Button("\(product.title) - \(product.price)") {
+                    store.purchaseProduct(product)
                 }
             }
+        } label: {
+            Text("😍 Suuport me")
         }
         .onAppear {
             store.start()

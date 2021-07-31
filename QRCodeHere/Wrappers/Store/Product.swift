@@ -14,11 +14,12 @@ struct Product: Hashable, Identifiable {
     let priceLocale: Locale
     let priceNumber: Double
     let imageName: String?
+    let skProduct: SKProduct
     
-    var price: String?
+    var price: String = ""
     var isLocked: Bool
     
-    lazy var priceFormatter: NumberFormatter = {
+    private lazy var priceFormatter: NumberFormatter = {
         let nf = NumberFormatter()
         nf.numberStyle = .currency
         nf.locale = priceLocale
@@ -34,9 +35,10 @@ struct Product: Hashable, Identifiable {
         self.priceLocale = product.priceLocale
         self.priceNumber = Double(truncating: product.price)
         self.imageName = product.productIdentifier
+        self.skProduct = product
         
         if isLocked {
-            self.price = priceFormatter.string(from: product.price)
+            self.price = priceFormatter.string(from: product.price) ?? "N/A"
         }
     }
 }
