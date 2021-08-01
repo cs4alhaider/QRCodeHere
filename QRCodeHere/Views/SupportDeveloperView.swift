@@ -13,17 +13,25 @@ struct SupportDeveloperView: View {
     @EnvironmentObject private var store: Store
     
     var body: some View {
-        Menu {
-            ForEach(store.allProducts) { product in
-                Button("\(product.title) - \(product.price)") {
-                    store.purchaseProduct(product)
+        Group {
+            if store.fetchingProductsInProgress {
+                HStack {
+                    Spacer()
+                    ProgressView()
+                        .scaleEffect(CGSize(width: 0.5, height: 0.5))
+                    Spacer()
+                }
+            } else {
+                Menu {
+                    ForEach(store.allProducts) { product in
+                        Button("\(product.title) - \(product.price)") {
+                            store.purchaseProduct(product)
+                        }
+                    }
+                } label: {
+                    Text("😍 Suuport me")
                 }
             }
-        } label: {
-            Text("😍 Suuport me")
-        }
-        .onAppear {
-            store.start()
         }
     }
 }

@@ -16,6 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        Store.shared.start()
         setupStatusItem()
     }
     

@@ -42,7 +42,7 @@ class Store: NSObject, ObservableObject {
     func start() {
         fetchingProductsInProgress = true
         fetchProducts { products in
-            self.fetchingProductsInProgress = true
+            self.fetchingProductsInProgress = false
             self.allProducts = products.map { Product(product: $0) }.sorted(by: \.priceNumber, order: .increasing)
         }
     }
