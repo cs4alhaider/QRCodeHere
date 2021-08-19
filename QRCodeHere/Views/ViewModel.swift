@@ -48,6 +48,10 @@ class ViewModel: ObservableObject {
     }
     
     func updateQRContent() {
+        if let content = defaults.value(forKey: .qrCodeContent) as? String {
+            text = content
+        }
+        
         if let watermarkContent = defaults.value(forKey: .watermarkContent) as? String {
             watermark = watermarkContent
             addWatermark = false
